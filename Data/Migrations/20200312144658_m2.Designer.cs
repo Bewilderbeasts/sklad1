@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sklad.Data;
 
 namespace sklad.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200312144658_m2")]
+    partial class m2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,7 +163,10 @@ namespace sklad.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId")
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId1")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -185,7 +190,7 @@ namespace sklad.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.ToTable("Address");
                 });
@@ -429,7 +434,7 @@ namespace sklad.Data.Migrations
                 {
                     b.HasOne("sklad.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Addresses")
-                        .HasForeignKey("ApplicationUserId")
+                        .HasForeignKey("ApplicationUserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
