@@ -13,6 +13,6 @@ namespace sklad.Data
 			: base(options)
 		{
 		}
-
+		public DbSet<sklad.Models.OrderItem> OrderItem { get; set; }
 	}
 }

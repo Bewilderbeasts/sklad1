@@ -9,6 +9,7 @@ namespace sklad.Models
 	public class Order
 	{
 		public int Id { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public DateTime OrderDate { get; set; }
 		public DateTime? RealizationDate { get; set; }
 

@@ -14,8 +14,8 @@ namespace sklad.Models
 		public string FirstName { get; set; }
 		[Required]
 		public string LastName { get; set; }
-		[Required]
-		public string Phone { get; set; }
+
+		public string Company { get; set; }
 
 		public List<Address> Addresses { get; set; }
 
