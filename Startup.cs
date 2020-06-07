@@ -31,11 +31,12 @@ namespace sklad
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
-			services.AddDefaultIdentity<ApplicationUser>(options => { options.SignIn.RequireConfirmedAccount = true; options.Password.RequireDigit = false; options.Password.RequireLowercase = false; options.Password.RequireNonAlphanumeric = false; options.Password.RequireUppercase = false; })
+			services.AddDefaultIdentity<ApplicationUser>(options => { options.SignIn.RequireConfirmedAccount = false; options.Password.RequireDigit = false; options.Password.RequireLowercase = false; options.Password.RequireNonAlphanumeric = false; options.Password.RequireUppercase = false; })
 				.AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+			services.AddSession();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +60,7 @@ namespace sklad
 
 			app.UseAuthentication();
 			app.UseAuthorization();
+			app.UseSession();
 
 			app.UseEndpoints(endpoints =>
 			{
@@ -67,6 +69,8 @@ namespace sklad
 					pattern: "{controller=Home}/{action=Index}/{id?}");
 				endpoints.MapRazorPages();
 			});
+
+			
 
 			CreateRoles(serviceProvider).Wait();
 		}
@@ -105,7 +109,7 @@ namespace sklad
 					LastName = "Admin",
 					EmailConfirmed = true
 				};
-				string adminPassword = "1qaz@WSX";
+				string adminPassword = "123456";
 
 				var createPowerUser = await UserManager.CreateAsync(powerUser, adminPassword);
 				if (createPowerUser.Succeeded)

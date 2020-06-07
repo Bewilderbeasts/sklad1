@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,8 +22,11 @@ namespace sklad.Models
 		public Item Item { get; set; }
 
 		[Required]
+		[Display(Name = "Ilość")]
 		public int Amount { get; set; }
+
 		[Required]
-		public double Price { get; set; }
+		[Column(TypeName = "decimal(18,2)")]
+		public decimal Price { get; set; }
 	}
 }

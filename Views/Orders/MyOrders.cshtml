@@ -1,0 +1,88 @@
+﻿@model IEnumerable<sklad.Models.Order>
+
+@{
+	ViewData["Title"] = "Moje zamówienia";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>Moje zamówienia</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.OrderDate)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.RealizationDate)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Driver)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.OrderItems)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Address)
+			</th>
+			<th>
+				Status
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+@foreach (var item in Model)
+{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Id)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.OrderDate)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.RealizationDate)
+			</td>
+			<td>
+				@if (item.Driver != null)
+				{
+					@Html.DisplayFor(modelItem => item.Driver.Formatted)
+					@Html.Raw(" tel. " + item.Driver.PhoneNumber)
+				}
+			</td>
+			<td>
+				@foreach (var oi in item.OrderItems)
+				{
+					@Html.Raw($"{oi.Amount} (");
+					@Html.DisplayFor(x => oi.Item.PriceFor);
+					@Html.Raw($") {oi.Item.Name} </ br>");
+				}
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Address.Formatted)
+			</td>
+			<td>
+				@{
+					if (item.RealizationDate.HasValue)
+					{
+						@Html.Raw("Zakończone");
+					}
+					else if (item.DriverId == "")
+					{
+						@Html.Raw("W realizacji");
+					}
+					else
+					{
+						@Html.Raw("Przyjęte");
+					}
+				}
+
+			</td>
+		</tr>
+}
+	</tbody>
+</table>

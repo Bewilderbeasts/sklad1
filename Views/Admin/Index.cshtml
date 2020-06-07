@@ -1,10 +1,19 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Panel Administratora";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="EmployeeList" asp-route-role="Warehouseman">Magazynierzy</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="EmployeeList" asp-route-role="Driver">Kierowcy</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="EmployeeList" asp-route-role="Customer">Klienci</a>
+    <h1>Panel Administratora</h1>
+
+    <div class="row" style="margin-left: auto; margin-right: auto; text-align: center;">
+        <img src="https://image.flaticon.com/icons/svg/2919/2919573.svg" width="20px;" /> <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="UserList">Użytkownicy</a>
+    </div>
+
+    <div class="row" style="margin-left: auto; margin-right: auto; text-align: center;">
+        <img src="https://image.flaticon.com/icons/svg/1295/1295181.svg" width="20px;" /> <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="EditCompanyAddress">Adres składu</a>
+    </div>
+
+    <div class="row" style="margin-left: auto; margin-right: auto; text-align: center;">
+        <img src="https://image.flaticon.com/icons/svg/876/876171.svg" width="20px;" /> <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Statistics">Statystyki</a>
+    </div>
