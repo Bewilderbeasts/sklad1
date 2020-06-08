@@ -41,6 +41,9 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Category.Name)
         </dd>
+        <td>
+            <img class="img-responsive" src="@Url.Content("~/img/items/" + Model.Image)" alt="">
+        </td>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -49,7 +52,7 @@
         </dd>
         <dd class="col-sm-10">
             @if (ViewBag.order)
-            { 
+            {
                 @using (Html.BeginForm("Add", "Cart", FormMethod.Get))
                 {
                     <input type="hidden" name="id" value="@Model.Id" />

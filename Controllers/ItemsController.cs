@@ -205,7 +205,7 @@ namespace sklad.Controllers
 		private void UploadFile(ref Item item, IFormFile image)
 		{
 				var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
-				var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\items", fileName);
+				var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\items", fileName);
 				using (var fileStream = new FileStream(filePath, FileMode.Create))
 				{
 					image.CopyTo(fileStream);
