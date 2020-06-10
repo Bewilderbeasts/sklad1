@@ -32,6 +32,7 @@ namespace sklad.Models
 		public string City { get; set; }
 
 		public string ApplicationUserId { get; set; }
+		[Display(Name = "Identyfikator użytkownika")]
 		public ApplicationUser ApplicationUser { get; set; }
 
 		public override string ToString()
