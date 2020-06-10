@@ -32,19 +32,17 @@ namespace sklad.Models
 		public int Quantity { get; set; }
 
 		public int CategoryId { get; set; }
-	
 		[Display(Name = "Kategoria")]
 		public Category Category { get; set; }
 
-		public enum PriceType 
-		{ 
+		public enum PriceType
+		{
 			[Display(Name = "sztuka")]
-			unit, 
-			kilogram 
+			unit,
+			kilogram
 		}
 
-	
-		[Display(Name = "Podgląd")]
+		[Display(Name = "Zdjęcie")]
 		public string Image { get; set; }
 
 		[Display(Name = "Opis")]
